@@ -1,7 +1,7 @@
 {
-  "name": "learn-redux",
+  "name": "adopt-a-dog",
   "version": "1.0.0",
-  "description": ":) ",
+  "description": "React app with Redux for state management. Powered by Petfinder.com API. Dog adoption app.",
   "scripts": {
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
@@ -12,11 +12,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wesbos/Learn-Redux.git"
+    "url": "https://github.com/monicawoj/adopt-a-dog.git"
   },
-  "author": "Wes Bos",
-  "license": "MIT",
-  "homepage": "https://github.com/wesbos/Learn-Redux",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
