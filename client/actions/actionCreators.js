@@ -1,3 +1,4 @@
+import axios from 'axios';
 //increment likes
 export const increment = (index) => {
   return {
@@ -43,4 +44,19 @@ export const removeComment = (postId, index) => {
     postId,
     index
   }
+}
+
+//fetch dogs with thunk (allows us to return a function)
+export const fetchDogs = () => {
+  const request = axios.get('http://jsonplaceholder.typicode.com/users');
+
+  return (dispatch) => {
+    request.then(({data}) => {
+      dispatch({
+        type: 'FETCH_DOGS',
+        data
+      })
+    })
+  }
+
 }

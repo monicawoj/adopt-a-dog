@@ -28,6 +28,22 @@ const posts = (state=[], action) => {
     case 'REMOVE_POST':
       const postId = action.postId;
       return state.filter(item => item.code !== postId);
+    case 'FETCH_DOGS':
+      const data = action.data;
+      const newItemsForState = data.map(item => {
+        return {
+          "code": item.id,
+          "caption": item.name,
+          "likes": item.id,
+          "id": item.id,
+          "display_src": `https://picsum.photos/400/400/?image=${Math.floor((Math.random() * 85))}`
+        }
+      });
+      state = [
+        ...state,
+        ...newItemsForState
+      ];
+      return state;
     default:
       return state;
   }
