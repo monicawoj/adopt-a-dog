@@ -2,6 +2,7 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
+import throttle from 'lodash/throttle';
 
 //import the root reducer
 import rootReducer from './reducers/index';
@@ -25,9 +26,11 @@ const enhancers = compose(
 
 const store = createStore(rootReducer, persistedState, applyMiddleware(thunk), enhancers);
 
-store.subscribe(() => {
-  saveState(store.getState());
-});
+store.subscribe(throttle(() => {
+  saveState({
+    favorites: store.getState().favorites
+  });
+},1000));
 
 export const history = syncHistoryWithStore(browserHistory, store);
 
