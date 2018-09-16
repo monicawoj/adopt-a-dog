@@ -5,8 +5,9 @@ import Main from './Main';
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts,
-    comments: state.comments
+    dogs: state.dogs,
+    comments: state.comments,
+    favorites: state.favorites
   }
 };
 

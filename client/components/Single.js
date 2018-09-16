@@ -5,16 +5,14 @@ import Comments from './Comments';
 
 export default class Single extends React.Component {
   render() {
-    //index of the post
-    //get us the post
-    const postId = this.props.params.postId;
-    const i = this.props.posts.findIndex((post) => post.code === postId); //loop over the posts until the index is equal to the url param
-    const post = this.props.posts[i];
-    const postComments = this.props.comments[post.code] ? this.props.comments[post.code] : null;
+    const id = this.props.params.id;
+    const i = this.props.dogs.findIndex((dog) => dog.id['$t'] === id); //loop over the dogs until the dog id is equal to the url id param
+    const dog = this.props.dogs[i];
+    const dogComments = this.props.comments[dog.id['$t']] ? this.props.comments[dog.id['$t']] : null;
 
     return <div className='single-photo'>
-      <Photo i={i} post={post} {...this.props}/>
-    <Comments postComments={postComments} {...this.props}/>
+      <Photo i={i} dog={dog} {...this.props}/>
+    <Comments dogComments={dogComments} {...this.props}/>
     </div>
   }
 }

@@ -2,12 +2,12 @@
 //and returns new state
 
 const comments = (state=[], action) => {
-  if (typeof action.postId !== 'undefined') {
+  if (typeof action.id !== 'undefined') {
     return {
       //take current state
       ...state,
       //overwrite this post with a new one based on the postComments reducer
-      [action.postId] : postComments(state[action.postId], action)
+      [action.id] : postComments(state[action.id], action)
     }
   }
   return state;
@@ -16,7 +16,6 @@ const comments = (state=[], action) => {
 const postComments = (state=[], action) => {
   switch (action.type) {
     case 'ADD_COMMENT':
-      //return the new state with a new comment
       return [...state, {
         user: action.author,
         text: action.comment

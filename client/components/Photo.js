@@ -5,31 +5,35 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class Photo extends React.Component {
   render() {
-    const {post, i, comments} = this.props;
+    const {dog, i, comments} = this.props;
+    const id = dog.id['$t'];
+    const dog_photo = dog.media.photos ? dog.media.photos.photo.filter(photo => photo['@size'] == "x")[0]['$t'] : '../assets/images/placeholder-paw.png';
 
     return (
       <figure className='grid-figure'>
         <div className='grip-photo-wrap'>
-          <Link to={`/view/${post.code}`}>
-            <img src={post.display_src} alt={post.caption} className='grid-photo'/>
+          <Link to={`/view/${id}`}>
+            <img src={dog_photo} alt={dog.name['$t']} className='grid-photo'/>
           </Link>
           <CSSTransitionGroup transitionName="like"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={500}>
-            <span key={post.likes} className="likes-heart">
-              {post.likes}
+            <span key={dog.likes} className="likes-heart">
+              {/* {dog.likes ? dog.likes : 0 } */}
             </span>
           </CSSTransitionGroup>
         </div>
 
         <figcaption>
-          <p>{post.caption}</p>
+          <p>{dog.name['$t']}</p>
+          <p>{dog.breeds.breed['$t']}</p>
           <div className="control-buttons">
-            <button onClick={this.props.increment.bind(null, i)}  className="likes">&hearts; {post.likes}</button>
-            <Link className="button" to={`/view/${post.code}`}>
+            <button onClick={e => this.props.increment(id)}  className="likes">&hearts; {dog.likes ? dog.likes : 0 }</button>
+            <button onClick={e => this.props.addToFavorites(dog)}  className="likes btn-danger">&hearts; </button>
+            <Link className="button" to={`/view/${id}`}>
               <span className="comment-count">
                 <span className="speech-bubble"> </span>
-              {comments[post.code] ? comments[post.code].length : 0 }
+              {comments[id] ? comments[id].length : 0 }
               </span>
             </Link>
           </div>

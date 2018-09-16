@@ -7,18 +7,27 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 
 import comments from './data/comments';
-import posts from './data/posts';
+import dogs from './data/dogs';
+import favorites from './data/favorites';
+import { loadState, saveState } from './localStorage.js';
+
+const persistedState = loadState();
 
 const defaultState = {
-  posts,
-  comments
+  dogs,
+  comments,
+  favorites,
 };
 
 const enhancers = compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
-const store = createStore(rootReducer, defaultState, applyMiddleware(thunk), enhancers);
+const store = createStore(rootReducer, persistedState, applyMiddleware(thunk), enhancers);
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

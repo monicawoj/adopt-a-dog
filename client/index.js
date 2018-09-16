@@ -7,8 +7,9 @@ import css from './styles/style.styl';
 //import components
 import App from './components/App';
 import Single from './components/Single';
-import PhotoGrid from './components/PhotoGrid';
-import NewPost from './components/NewPost';
+import HomePage from './components/HomePage';
+import SearchPage from './components/SearchPage';
+import FavoritesPage from './components/FavoritesPage';
 
 //import react router deps
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
@@ -19,9 +20,10 @@ const router = (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={PhotoGrid}/>
-        <Route path="/view/:postId" component={Single}/>
-        <Route path="/add/" component={NewPost}/>
+        <IndexRoute component={HomePage}/>
+        <Route path="/view/:id" component={Single}/>
+        <Route path="/search/" component={SearchPage}/>
+        <Route path="/favorites/" component={FavoritesPage}/>
       </Route>
     </Router>
   </Provider>

@@ -1,11 +1,13 @@
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
-import posts from './posts';
+import dogs from './dogs';
 import comments from './comments';
+import favorites from './favorites';
 
 const rootReducer = combineReducers({
-  posts,
+  dogs,
   comments,
+  favorites,
   routing: routerReducer
 });
 
