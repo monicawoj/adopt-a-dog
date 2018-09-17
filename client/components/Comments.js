@@ -1,5 +1,8 @@
 import React from 'react';
-import { withRouter } from 'react-router';
+import { Link, withRouter } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import DeleteButton from './DeleteButton';
 
 class Comments extends React.Component {
   renderComment = (comment,i) => {
@@ -20,32 +23,27 @@ class Comments extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const {id} = this.props.params;
-    //const author = this.refs.author.value;
     const comment = this.refs.comment.value;
-    // console.log(this.refs) //everything we put refs on, we can grab
     this.props.addComment(id,comment);
     this.refs.commentForm.reset();
   }
 
-  handleDeleteClick = (e) => {
-    this.props.removePost(this.props.params.id);
-    this.props.history.push('/');
-  }
-
   render() {
+    const {i} = this.props;
     return (
       <div className="comments-wrap">
         <div className="comments">
           { this.props.dogComments ? this.props.dogComments.map(this.renderComment) : null }
           <form ref="commentForm" className="comment-form" onSubmit={this.handleSubmit}>
-            {/* <input type="text" ref="author" placeholder="author"/> */}
             <input type="text" ref="comment" placeholder="Add notes"/>
             <input type="submit" hidden />
           </form>
         </div>
-        <button className="delete-button" onClick={this.handleDeleteClick}>
-          DELETE
-        </button>
+        <Link to={this.props.history.goBack} className='button'>
+          <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
+          &nbsp; Back
+        </Link>
+        {this.props.dogs[i].favorite ? <DeleteButton {...this.props} i={i}/> : null}
       </div>
     )
   }

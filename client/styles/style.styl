@@ -84,13 +84,13 @@ body
 .grid-photo-wrap
   position relative
 
-.likes-heart
+.favorite-heart
   background url(http://f.cl.ly/items/3Y373q2Q3J3Y1j203n0m/Bitmap-3.png) center no-repeat
   background-size contain
   font-size 2rem
   padding 1rem
   position absolute
-  color blue
+  color #d43f3a
   left 50%
   top 50%
   pointer-events none
@@ -107,7 +107,6 @@ body
 button, .button
   border 2px solid lighten(grey, 90%)
   background none
-  flex-basis 48%
   display inline-block
   line-height 2
   text-decoration none
@@ -190,4 +189,24 @@ button, .button
 
 .delete-button {
   width: 100%;
+}
+
+.button-wrap {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-button {
+  flex-basis 48%
+}
+
+.button-show-more {
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  flex-basis: 1;
 }

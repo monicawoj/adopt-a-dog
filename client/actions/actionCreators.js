@@ -1,12 +1,21 @@
 import axios from 'axios';
 import api from '../api';
 
-//increment likes
-export const increment = (id) => {
-  console.log('dispatch increment likes')
+//mark as favorite to render red heart on home or search page
+export const markAsFavorite = (i) => {
+  console.log('dispatch mark as favorite')
   return {
-    type: 'INCREMENT_LIKES',
-    id
+    type: 'MARK_AS_FAVORITE',
+    i
+  }
+}
+
+//unmark from favorites
+export const unMarkAsFavorite = (i) => {
+  console.log('dispatch unmark as favorite')
+  return {
+    type: 'UNMARK_AS_FAVORITE',
+    i
   }
 }
 
@@ -71,7 +80,6 @@ export const getDogs = () => {
 //get all dogs that were "hearted" as favorites
 export function getFavorites() {
   console.log('dispatch get favorites');
-  //console.log(data);
   return {
     type: 'GET_FAVORITES'
   }
@@ -79,10 +87,33 @@ export function getFavorites() {
 
 export function addToFavorites(data) {
   console.log('dispatch add to favorites');
-  console.log(data);
   return {
     type: 'ADD_TO_FAVORITES',
     data
+  }
+}
+
+export function removeFromFavorites(id) {
+  console.log('dispatch remove from favorites');
+  return {
+    type: 'REMOVE_FROM_FAVORITES',
+    id
+  }
+}
+
+export const handleFavoriteClick = (data,i) => {
+  return (dispatch) => {
+    //const i = data.id['$t'];
+    dispatch(markAsFavorite(i));
+    dispatch(addToFavorites(data));
+  }
+}
+
+export const handleRemoveFavorite = (id,i) => {
+  return (dispatch) => {
+    //const i = data.id['$t'];
+    dispatch(unMarkAsFavorite(i));
+    dispatch(removeFromFavorites(id));
   }
 }
 

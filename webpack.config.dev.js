@@ -29,7 +29,9 @@ module.exports = {
       test: /\.styl$/,
       include: path.join(__dirname, 'client'),
       loader: 'style-loader!css-loader!stylus-loader'
-    }
+    },
+    //local images
+    { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }
     ]
   }
 };

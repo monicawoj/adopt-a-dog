@@ -17,12 +17,8 @@ const favorites = (state=[], action) => {
         ...itemsToKeep
       ]
     case 'GET_FAVORITES':
-      //const favorites = action.data;
-      //console.log(favorites);
-      console.log(state);
       return [
         ...state
-        //...favorites
       ]
     default:
       return state;

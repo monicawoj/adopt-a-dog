@@ -24,13 +24,15 @@ const enhancers = compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
-const store = createStore(rootReducer, persistedState, applyMiddleware(thunk), enhancers);
+const store = createStore(rootReducer, defaultState, applyMiddleware(thunk), enhancers);
 
-store.subscribe(throttle(() => {
-  saveState({
-    favorites: store.getState().favorites
-  });
-},1000));
+// const store = createStore(rootReducer, persistedState, applyMiddleware(thunk), enhancers);
+//
+// store.subscribe(throttle(() => {
+//   saveState({
+//     favorites: store.getState().favorites
+//   });
+// },1000));
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

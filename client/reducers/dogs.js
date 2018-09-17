@@ -3,19 +3,30 @@
 import { faker } from 'faker';
 
 const dogs = (state=[], action) => {
+  const i = action.i;
   switch (action.type) {
-    case 'INCREMENT_LIKES':
-      const id = action.id;
-      const itemToUpdate = state.filter(item => item.id['$t'] == id);
+    case 'MARK_AS_FAVORITE':
       state = [
-        ...state,
-        {...itemToUpdate, likes: itemToUpdate.likes + 1}
+        ...state.slice(0,i),
+        {...state[i], 'favorite':true},
+        ...state.slice(i+1)
+      ];
+      return state;
+    case 'UNMARK_AS_FAVORITE':
+      state = [
+        ...state.slice(0,i),
+        {...state[i], 'favorite':false},
+        ...state.slice(i+1)
       ];
       return state;
     case 'FETCH_DOGS':
       const data = action.data;
-      console.log(data);
-      const newItemsForState = data;
+      const newItemsForState = data.map(item => {
+        return {
+          ...item,
+          'favorite':false
+        }
+      });
       state = [
         ...state,
         ...newItemsForState

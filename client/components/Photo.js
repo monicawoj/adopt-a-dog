@@ -1,13 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Link } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle, faHeart } from '@fortawesome/free-solid-svg-icons';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class Photo extends React.Component {
   render() {
     const {dog, i, comments} = this.props;
     const id = dog.id['$t'];
-    const dog_photo = dog.media.photos ? dog.media.photos.photo.filter(photo => photo['@size'] == "x")[0]['$t'] : '../assets/images/placeholder-paw.png';
+    const dog_photo = dog.media.photos ? dog.media.photos.photo.filter(photo => photo['@size'] == "x")[0]['$t'] : require('../assets/images/placeholder-paw.png');
 
     return (
       <figure className='grid-figure'>
@@ -15,11 +17,11 @@ export default class Photo extends React.Component {
           <Link to={`/view/${id}`}>
             <img src={dog_photo} alt={dog.name['$t']} className='grid-photo'/>
           </Link>
-          <CSSTransitionGroup transitionName="like"
+          <CSSTransitionGroup transitionName="favorite"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={500}>
-            <span key={dog.likes} className="likes-heart">
-              {/* {dog.likes ? dog.likes : 0 } */}
+            <span key={dog.favorite} className="favorite-heart">
+              <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
             </span>
           </CSSTransitionGroup>
         </div>
@@ -28,12 +30,11 @@ export default class Photo extends React.Component {
           <p>{dog.name['$t']}</p>
           <p>{dog.breeds.breed['$t']}</p>
           <div className="control-buttons">
-            <button onClick={e => this.props.increment(id)}  className="likes">&hearts; {dog.likes ? dog.likes : 0 }</button>
-            <button onClick={e => this.props.addToFavorites(dog)}  className="likes btn-danger">&hearts; </button>
-            <Link className="button" to={`/view/${id}`}>
-              <span className="comment-count">
-                <span className="speech-bubble"> </span>
-              {comments[id] ? comments[id].length : 0 }
+            {!dog.favorite ? <button onClick={e => this.props.handleFavoriteClick(dog,i)}  className="control-button favorite">&hearts;</button> : null}
+            <Link className="control-button button" to={`/view/${id}`}>
+              <span>
+                <FontAwesomeIcon icon={faInfoCircle}></FontAwesomeIcon>
+                More info
               </span>
             </Link>
           </div>
