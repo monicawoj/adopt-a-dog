@@ -77,6 +77,29 @@ export const getDogs = () => {
   }
 }
 
+//full breed list from api
+export const requestBreedList = () => {
+  const request = api.dogs().breedList();
+  console.log('request breed list');
+
+  return (dispatch) => {
+    request.then(({data}) => {
+      const cleanData = JSON.parse(data.substring(2,data.length-2));
+      const breeds = cleanData.petfinder.breeds.breed.map(breed => breed['$t']);
+      dispatch(getBreedList(breeds));
+    });
+  }
+}
+
+//dispatch breed list to store
+export function getBreedList(data) {
+  console.log('dispatch get breed list');
+  return {
+    type: 'GET_BREED_LIST',
+    data
+  }
+}
+
 //get all dogs that were "hearted" as favorites
 export function getFavorites() {
   console.log('dispatch get favorites');

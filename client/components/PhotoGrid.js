@@ -5,9 +5,6 @@ import AddBlock from './AddBlock';
 import api from '../api';
 
 export default class PhotoGrid extends React.Component {
-  // componentWillMount() {
-  //   console.log(this.props.favorites);
-  // }
 
   render() {
     //console.log(this.props);

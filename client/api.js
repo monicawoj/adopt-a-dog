@@ -8,25 +8,17 @@ const api = {
     const key = 'd7ee8264f2832def33bc257db3764b28';
     const animal = 'dog';
     const output = 'full';
-    const count = '30';
     const proxy = 'https://cors-anywhere.herokuapp.com/';
 
     return {
       breedList: () => {
-        console.log(`${proxy}${base}/breed.list?format=${format}&key=${key}&callback=?&animal=${animal}`);
-        return axios
-        .get(`${proxy}${base}/breed.list?format=${format}&key=${key}&callback=?&animal=${animal}`)
-        .then(({data}) => {
-          const cleanData = JSON.parse(data.substring(2,data.length-2));
-          const breeds = cleanData.petfinder.breeds.breed.map(breed => breed['$t']);
-          console.log(breeds);
-          return breeds;
-        });
+        // console.log(`${proxy}${base}/breed.list?format=${format}&key=${key}&callback=?&animal=${animal}`);
+        return axios.get(`${proxy}${base}/breed.list?format=${format}&key=${key}&callback=?&animal=${animal}`);
       },
       getRandom: (count) => {
         return axios.get(`${proxy}${base}/pet.getRandom?format=${format}&key=${key}&callback=?&animal=${animal}&output=${output}&count=${count}`);
       },
-      find: (breed=null, size=null, sex=null, location=null, age=null) => {
+      find: (breed=null, size=null, sex=null, location=null, age=null, count='12') => {
         return axios.get(`${proxy}${base}/pet.find?format=${format}&key=${key}&callback=?&animal=${animal}&output=${output}&count=${count}
           ${breed ? `&breed=${breed}` : null}
           ${size ? `&size=${size}` : null}

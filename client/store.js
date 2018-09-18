@@ -10,6 +10,7 @@ import rootReducer from './reducers/index';
 import comments from './data/comments';
 import dogs from './data/dogs';
 import favorites from './data/favorites';
+import breeds from './data/breeds';
 import { loadState, saveState } from './localStorage.js';
 
 const persistedState = loadState();
@@ -18,6 +19,7 @@ const defaultState = {
   dogs,
   comments,
   favorites,
+  breeds
 };
 
 const enhancers = compose(

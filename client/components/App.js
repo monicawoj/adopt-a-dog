@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
   return {
     dogs: state.dogs,
     comments: state.comments,
-    favorites: state.favorites
+    favorites: state.favorites,
+    breeds: state.breeds,
   }
 };
 
