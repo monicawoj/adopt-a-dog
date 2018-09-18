@@ -17,7 +17,7 @@ export default class SearchPage extends React.Component {
       //need to call the API request upon submit
       //this.props.fetchDogs('http://jsonplaceholder.typicode.com/users');
 
-      // <PhotoGrid {...this.props} />
+      // <PhotoGrid {...this.props} items={this.props.dogs} />
       <SearchForm {...this.props} />
     )
   }

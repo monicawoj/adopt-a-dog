@@ -71,8 +71,7 @@ export const getDogs = () => {
 
   return (dispatch) => {
     request.then(({data}) => {
-      const cleanData = JSON.parse(data.substring(2,data.length-2));
-      dispatch(fetchDogs(cleanData.petfinder.pet))
+      dispatch(fetchDogs(data.petfinder.pet))
     });
   }
 }
@@ -84,8 +83,7 @@ export const requestBreedList = () => {
 
   return (dispatch) => {
     request.then(({data}) => {
-      const cleanData = JSON.parse(data.substring(2,data.length-2));
-      const breeds = cleanData.petfinder.breeds.breed.map(breed => breed['$t']);
+      const breeds = data.petfinder.breeds.breed.map(breed => breed['$t']);
       dispatch(getBreedList(breeds));
     });
   }
@@ -140,14 +138,21 @@ export const handleRemoveFavorite = (id,i) => {
   }
 }
 
-//START HERE TOMORROW - FIND DOGS
-// export const findDogs = (breed, size, sex, location, age) => {
-//   const request = api.dogs().find(breed, size, sex, location, age);
-//
-//   return (dispatch) => {
-//     request.then(({data}) => {
-//       const cleanData = JSON.parse(data.substring(2,data.length-2));
-//       dispatch(fetchDogs(cleanData.petfinder.pet))
-//     });
-//   }
-// }
+//start the api request, dispatch the find dogs action
+export const requestFindDogs = (breed, size, sex, location, age) => {
+  const request = api.dogs().find(breed, size, sex, location, age);
+
+  return (dispatch) => {
+    request.then(({data}) => {
+      dispatch(findDogs(data.petfinder.pet))
+    });
+  }
+}
+
+//find dogs
+export const findDogs = (data) => {
+  return {
+    type: 'FIND_DOGS',
+    data
+  }
+}

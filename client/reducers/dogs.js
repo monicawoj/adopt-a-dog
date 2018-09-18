@@ -3,9 +3,9 @@
 import { faker } from 'faker';
 
 const dogs = (state=[], action) => {
-  const i = action.i;
   switch (action.type) {
     case 'MARK_AS_FAVORITE':
+      const i = action.i;
       state = [
         ...state.slice(0,i),
         {...state[i], 'favorite':true},
@@ -14,14 +14,13 @@ const dogs = (state=[], action) => {
       return state;
     case 'UNMARK_AS_FAVORITE':
       state = [
-        ...state.slice(0,i),
-        {...state[i], 'favorite':false},
-        ...state.slice(i+1)
+        ...state.slice(0,action.i),
+        {...state[action.i], 'favorite':false},
+        ...state.slice(action.i+1)
       ];
       return state;
     case 'FETCH_DOGS':
-      const data = action.data;
-      const newItemsForState = data.map(item => {
+      const newDogs = action.data.map(item => {
         return {
           ...item,
           'favorite':false
@@ -29,7 +28,19 @@ const dogs = (state=[], action) => {
       });
       state = [
         ...state,
-        ...newItemsForState
+        ...newDogs
+      ];
+      return state;
+    case 'FIND_DOGS':
+      console.log(action);
+      const foundDogs = action.data.map(item => {
+        return {
+          ...item,
+          'favorite':false
+        }
+      });
+      state = [
+        ...foundDogs
       ];
       return state;
     default:

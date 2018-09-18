@@ -7,16 +7,8 @@ import api from '../api';
 export default class PhotoGrid extends React.Component {
 
   render() {
-    //console.log(this.props);
-    //if (this.props.page == 'fav') {
-      //console.log('rendering favorites')
       return <div className='photo-grid'>
         {this.props.items.map((dog,i) => <Photo {...this.props} key={i} i={i} dog={dog} />)}
       </div>
-    //}
-    // console.log('rendering dogs');
-    // return <div className='photo-grid'>
-    //   {this.props.dogs.map((dog,i) => <Photo {...this.props} key={i} i={i} dog={dog} />)}
-    // </div>
   }
 }
