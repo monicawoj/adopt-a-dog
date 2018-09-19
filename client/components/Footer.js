@@ -11,7 +11,7 @@ import {
 } from 'react-share';
 
 const Footer = () => {
-    const shareUrl=`${window.location.protocol}//${window.location.hostname}`;
+    const shareUrl='https://doptadog.herokuapp.com/';
     console.log(shareUrl);
     return <div className="container">
       <footer>

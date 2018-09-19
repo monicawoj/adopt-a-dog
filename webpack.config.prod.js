@@ -15,7 +15,8 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': "'production'"
+        'NODE_ENV': "'production'",
+        'HOST_URL': 'https://doptadog.herokuapp.com'
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
@@ -37,7 +38,9 @@ module.exports = {
       test: /\.styl$/,
       include: path.join(__dirname, 'client'),
       loader: 'style-loader!css-loader!stylus-loader'
-    }
+    },
+    //local images
+    { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }
     ]
   }
 };
