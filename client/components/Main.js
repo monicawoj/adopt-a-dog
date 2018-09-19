@@ -9,7 +9,7 @@ export default class Main extends React.Component {
       <Header />
       <h1>
         <Link to='/'>
-          aDoptaDog
+          doptadog
         </Link>
       </h1>
       {React.cloneElement(this.props.children, this.props)}
