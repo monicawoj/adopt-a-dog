@@ -27,15 +27,11 @@ const Header = () => {
     <NavItem eventKey={2} href="/favorites/">
       My favorites
     </NavItem>
-    {/* <li><Link to='/'>Explore</Link></li>
-    <li><Link to='/search/'>Search</Link></li>
-    <li><Link to='/favorites/'>My Favorites</Link></li> */}
     <NavDropdown eventKey={3}title="About" id="basic-nav-dropdown">
-      <MenuItem eventKey={3.1}>Inspiration</MenuItem>
-      <MenuItem eventKey={3.2}>Sources</MenuItem>
-      <MenuItem eventKey={3.3}>How to Use</MenuItem>
+      <MenuItem eventKey={3.1} href='/about/'>Inspiration</MenuItem>
+      <MenuItem eventKey={3.2} href='http://monicawojciechowski.com'>About the creator</MenuItem>
       <MenuItem divider />
-      <MenuItem eventKey={3.4}>Helpful Links</MenuItem>
+      <MenuItem eventKey={3.3} href='https://github.com/monicawoj/adopt-a-dog.git'>Source code</MenuItem>
     </NavDropdown>
   </Nav>
 </Navbar>;

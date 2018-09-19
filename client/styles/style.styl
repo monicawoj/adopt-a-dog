@@ -25,6 +25,7 @@ body
 .single-photo
   @extend .grid-figure
   max-width 900px
+  max-height 1000px
   margin 0 auto
   display flex
   background white
@@ -180,11 +181,8 @@ button, .button
   flex-direction: column;
 }
 
-.comments-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
+.description-wrap {
+  overflow: scroll;
 }
 
 .delete-button {
@@ -210,3 +208,11 @@ button, .button
   text-align: center;
   flex-basis: 1;
 }
+
+.minHeight
+  min-height 80vh
+
+.flex-row
+  display flex
+  align-items center
+  justify-content flex-start

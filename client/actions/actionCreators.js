@@ -38,23 +38,22 @@ export const removePost = (postId) => {
 }
 
 //add comment
-export const addComment = (postId, author, comment) => {
+export const addComment = (id, text) => {
   console.log('dispatch add comment');
   return {
     type: 'ADD_COMMENT',
-    postId,
-    author,
-    comment
+    id,
+    text
   }
 }
 
 //remove comment
-export const removeComment = (postId, index) => {
+export const removeComment = (id, i) => {
   console.log('removing a comment');
   return {
     type: 'REMOVE_COMMENT',
-    postId,
-    index
+    id,
+    i
   }
 }
 
@@ -140,17 +139,19 @@ export const handleRemoveFavorite = (id,i) => {
 
 //start the api request, dispatch the find dogs action
 export const requestFindDogs = (breed, size, sex, location, age) => {
+  console.log('requesting find dogs');
   const request = api.dogs().find(breed, size, sex, location, age);
 
   return (dispatch) => {
     request.then(({data}) => {
-      dispatch(findDogs(data.petfinder.pet))
+      dispatch(findDogs(data.petfinder.pets.pet))
     });
   }
 }
 
 //find dogs
 export const findDogs = (data) => {
+  console.log('dispatch find dogs');
   return {
     type: 'FIND_DOGS',
     data

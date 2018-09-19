@@ -18,9 +18,9 @@ const api = {
         return axios.get(`${proxy}${base}pet.getRandom?format=${format}&key=${key}&animal=${animal}&output=${output}&count=${count}`);
       },
       find: (breed='', size='', sex='', location='', age='', count='12') => {
-        console.log(`${proxy}${base}pet.getRandom?format=${format}&key=${key}&animal=${animal}&output=${output}&count=${count}${(breed !== '') ? `&breed=${breed}` : ''}${(size !== '') ? `&size=${size}` : ''}${(sex !== '') ? `&sex=${sex}` : ''}${(location !== '') ? `&location=${location}` : ''}`
+        console.log(`${base}pet.find?format=${format}&key=${key}&animal=${animal}&output=${output}&count=${count}${(breed !== '') ? `&breed=${breed.replace(/ /g,"%20")}` : ''}${(size !== '') ? `&size=${size}` : ''}${(sex !== '') ? `&sex=${sex}` : ''}${(location !== '') ? `&location=${location}` : '22204'}${(age !== '') ? `&age=${age}` : ''}`
         );
-        return axios.get(`${proxy}${base}pet.getRandom?format=${format}&key=${key}&animal=${animal}&output=${output}&count=${count}${(breed !== '') ? `&breed=${breed}` : ''}${(size !== '') ? `&size=${size}` : ''}${(sex !== '') ? `&sex=${sex}` : ''}${(location !== '') ? `&location=${location}` : ''}`
+        return axios.get(`${proxy}${base}pet.find?format=${format}&key=${key}&animal=${animal}&output=${output}&count=${count}${(breed !== '') ? `&breed=${breed.replace(/ /g,"%20")}` : ''}${(size !== '') ? `&size=${size}` : ''}${(sex !== '') ? `&sex=${sex}` : ''}${(location !== '') ? `&location=${location}` : '22204'}${(age !== '') ? `&age=${age}` : ''}`
         );
       }
     }

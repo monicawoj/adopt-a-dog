@@ -8,7 +8,7 @@ const favorites = (state=[], action) => {
       const data = action.data;
       return [
         ...state,
-        {...data}
+        {...data, favorite: true}
       ]
     case 'REMOVE_FROM_FAVORITES':
       const id = action.id;
