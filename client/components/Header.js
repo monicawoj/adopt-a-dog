@@ -22,7 +22,7 @@ const Header = () => {
       Explore all
     </NavItem>
     <NavItem eventKey={2} href="/search/">
-      Search by type
+      Search locally
     </NavItem>
     <NavItem eventKey={2} href="/favorites/">
       My favorites

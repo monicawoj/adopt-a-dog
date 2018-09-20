@@ -12,7 +12,6 @@ import {
 
 const Footer = () => {
     const shareUrl='https://doptadog.herokuapp.com/';
-    console.log(shareUrl);
     return <div className="container">
       <footer>
         <p>Copyright &copy; Monica Wojciechowski, 2018. Source code on &nbsp;

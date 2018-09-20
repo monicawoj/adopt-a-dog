@@ -9,14 +9,13 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/dist/'
+    publicPath: '/static/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': "'production'",
-        'HOST_URL': 'https://doptadog.herokuapp.com'
+        'NODE_ENV': "'production'"
       }
     }),
     new webpack.optimize.UglifyJsPlugin({

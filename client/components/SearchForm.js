@@ -76,7 +76,7 @@ export default class SearchForm extends React.Component {
                 onChange={e => this.handleChange(e,'location')}
               />
               <FormControl.Feedback />
-              <HelpBlock>Want to search locally? Enter a US ZIP/postal code (e.g. 22204)</HelpBlock>
+              <HelpBlock>Please enter a U.S. ZIP/postal code (e.g. 22204)</HelpBlock>
             </FormGroup>
             <FormGroup controlId="breedSelect">
               <ControlLabel>Breed</ControlLabel>

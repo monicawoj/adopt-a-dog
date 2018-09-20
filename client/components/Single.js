@@ -34,9 +34,6 @@ export default class Single extends React.Component {
         <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
         &nbsp; Back
       </button>
-      {/* <Link to={this.props.history.goBack} className='button'>
-
-      </Link> */}
       {dog.favorite ? <DeleteButton {...this.props} i={i}/> : null}
     </div>
 
