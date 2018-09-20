@@ -27,8 +27,14 @@ export default class Photo extends React.Component {
         </div>
 
         <figcaption>
-          <p>{dog.name['$t']}</p>
-          <p>{dog.breeds.breed['$t']}</p>
+          <p>
+            <strong>
+              {dog.name['$t']}
+            </strong>
+          </p>
+          <p>
+            {dog.breeds.breed['$t']}
+          </p>
           <div className="control-buttons">
             {!dog.favorite ? <button onClick={e => this.props.handleFavoriteClick(dog,i)}  className="control-button favorite">&hearts;</button> : null}
             <Link className="control-button button" to={`/view/${id}`}>
